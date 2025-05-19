@@ -4,8 +4,12 @@ from tasks import views
 app_name = 'tasks'
 
 urlpatterns = [
-	path('', 
+	path('tasks/', 
       views.TaskAPIList().as_view(),
-      name='home'
+      name='tasks'
     ),
+	path('tasks/<int:pk>/',
+      views.TaskAPIDetail().as_view(),
+      name='task-detail')
+	
 ]
