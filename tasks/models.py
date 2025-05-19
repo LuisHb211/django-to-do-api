@@ -13,7 +13,11 @@ class Task(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	finish_at = models.DateField()
 	status = models.ForeignKey(
-		TaskStatus, on_delete=models.SET_NULL, null=True, blank=True, default=None
+		TaskStatus, 
+  		on_delete=models.SET_NULL, 
+    	null=True, 
+     	blank=True, 
+      	default=None
 	)
  
 	def __str__(self):
