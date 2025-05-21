@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-
+from rest_framework.viewsets import ModelViewSet
 from .models import Task
 from .serializers import TaskSerializer, TaskStatusSerializer
 
@@ -10,12 +9,7 @@ from rest_framework.pagination import PageNumberPagination
 class TaskPagination(PageNumberPagination):
     page_size = 2
 
-class TaskAPIList(ListCreateAPIView):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
-    pagination_class = TaskPagination
-
-class TaskAPIDetail(RetrieveUpdateDestroyAPIView):
+class TaskAPIViewSet(ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     pagination_class = TaskPagination
